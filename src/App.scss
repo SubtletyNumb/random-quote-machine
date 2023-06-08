@@ -1,12 +1,14 @@
-html, body {
+$bg-color: #ffffff;
+
+html, body{
   box-sizing: border-box;
-  background-color: #ffffff;
+  background-color: $bg-color;
 }
 
-.main-container {
+.main-container{
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   height: 100vh;
-}/*# sourceMappingURL=App.css.map */
+}

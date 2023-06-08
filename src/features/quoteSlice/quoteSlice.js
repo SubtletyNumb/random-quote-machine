@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk, current } from "@reduxjs/toolkit";
 import { wait } from "@testing-library/user-event/dist/utils";
 import axios from "axios";
 
@@ -7,6 +7,14 @@ const initialState = {
   quoteText: '',
   playAnim: false,
   quoteAuthor: '',
+  bgPossibleColors: {
+    0: 'yellow',
+    1: 'lightsalmon',
+    2: 'aqua',
+    3: 'lightcoral',
+    4: 'lemonchiffon'
+  },
+  currentBgColor: '',
 }
 const category = 'happiness'
 const url = 'https://api.api-ninjas.com/v1/quotes?limi=1'
@@ -30,9 +38,12 @@ const quoteSlice = createSlice({
   name: 'quote',
   initialState,
   reducers : {
-    animIsLoadingEffect: (state, payload) => {
+    animIsLoadingEffect: (state) => {
       state.playAnim = true;
       console.log(state.playAnim);
+    },
+    randomizeColor: (state) => {
+      state.currentBgColor = state.bgPossibleColors[Math.floor(Math.random() * Object.keys(state.bgPossibleColors).length)];
     }
   },
   extraReducers: {
@@ -51,4 +62,4 @@ const quoteSlice = createSlice({
 });
 
 export default quoteSlice.reducer
-export const {animIsLoadingEffect} = quoteSlice.actions;
+export const {animIsLoadingEffect, randomizeColor} = quoteSlice.actions;

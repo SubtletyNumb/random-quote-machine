@@ -1,6 +1,5 @@
 html, body {
   box-sizing: border-box;
-  background-color: #ffffff;
 }
 
 .main-container {
@@ -9,4 +8,19 @@ html, body {
   justify-content: center;
   align-items: center;
   height: 100vh;
+  background-color: var(--bg-clr, #ffffff);
+}
+
+.main-animation {
+  animation-name: main-loading-anim;
+  animation-duration: 1s;
+  animation-timing-function: ease;
+  animation-iteration-count: infinite;
+  animation-delay: 0s;
+}
+
+@keyframes main-loading-anim {
+  100% {
+    background-color: var(--anim-main-bg-clr, white);
+  }
 }/*# sourceMappingURL=App.css.map */
